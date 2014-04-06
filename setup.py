@@ -77,7 +77,7 @@ f2py.run_main(['--debug-capi', '-m', '_pycamb', '-h',
     '--overwrite-signature', 'src/pycamb_main.pyf', 
          'src/pycamb_main.f90', 'camb/constants.f90'])
 
-setup(name="pycamb", version="0.1",
+setup(name="pycamb", version="0.2",
       author="Joe Zuntz",
       author_email="jaz@astro.ox.ac.uk",
       description="python binding of camb, you need sign agreement and obtain camb source code to build this. Thus we can not GPL this code.",
