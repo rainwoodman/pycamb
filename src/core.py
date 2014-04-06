@@ -36,6 +36,9 @@ class PyCamb(object):
     def __setitem__(self, index, value):
         self.pvec[index] = value
 
+    def __call__(self, lmax, max_eta_k=None):
+        return self.camb(lmax, max_eta_k)
+
     def camb(self, lmax, max_eta_k=None):
         """
         Run camb up to the given lmax, with the given parameters and return the Cls.  Parameter names are case-insensitive.
@@ -103,7 +106,7 @@ class PyCamb(object):
         kh=_f.matter_power_kh.copy()[..., inv]
         _f.freepower()
 
-        if pvec['N_ps'] == 1:
+        if self.pvec['N_ps'] == 1:
             power = power[:, 0, :]
 
         if numpy.isscalar(z):
