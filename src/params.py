@@ -46,7 +46,8 @@ class BoundParams(numpy.ndarray):
                     vector[i] = p.default
                 else:
                     vector[i] = numpy.nan
-            self.lookup[p.name] = vector[i]
+            # get a reference
+            self.lookup[p.name] = vector[i, ...]
         return self
     @property
     def keys(self):
@@ -54,6 +55,9 @@ class BoundParams(numpy.ndarray):
 
     def __getitem__(self, index):
         return self.lookup[index]
+
+    def __setitem__(self, index, value):
+        self.lookup[index][...] = value
 
     def __repr__(self):
         return '\n'.join([

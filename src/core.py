@@ -17,13 +17,24 @@ class PyCambError(Exception):
         Exception.__init__(self, errors.global_error_message.tostring().strip())
 
 class PyCamb(object):
-    """ see pycamb.__doc__
-    """
+    """ A CAMB wrapper object. """
     def __init__(self, **kwargs):
         self.pvec = PARAMS(**kwargs)
+    __init__.__doc__ = """ Create a CAMB wrapper object.
+
+    The list of supported kwargs is:
+%s
+    to see the current values of the parameters, print the object.
+    """ % str(PARAMS)
 
     def __repr__(self):
-        return PARAMS.formatvec(self.pvec)
+        return """CAMB wrapper object with parameters: \n%s\n""" % str(self.pvec)
+
+    def __getitem__(self, index):
+        return self.pvec[index]
+
+    def __setitem__(self, index, value):
+        self.pvec[index] = value
 
     def camb(self, lmax, max_eta_k=None):
         """
