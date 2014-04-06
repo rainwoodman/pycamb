@@ -99,8 +99,9 @@ import pylab
 lmax=2000
 ns_values = [0.8,0.9,1.0,1.1]
 ell = pylab.arange(1,lmax)
+camb = pycamb.PyCamb(n_s=ns)
 for ns in ns_values:
-    camb = pycamb.PyCamb(n_s=ns)
+    camb['n_s'] = ns
     T,E,B,X = camb(lmax)
     pylab.semilogx(ell,T,label="%.2f"%ns)
 pylab.legend()
