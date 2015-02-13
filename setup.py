@@ -1,6 +1,5 @@
 from numpy.distutils.core import setup, Extension
 from numpy import get_include
-import generatePyCamb
 import os.path
 from nonstopf2py import f2py
 from sys import path
