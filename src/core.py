@@ -28,7 +28,7 @@ class PyCamb(object):
     """ % str(PARAMS)
 
     def __repr__(self):
-        return """CAMB wrapper object with parameters: \n%s\n""" % str(self.pvec)
+        return """CAMB wrapper object with parameters: \n%s\n""" % repr(self.pvec)
 
     def __getitem__(self, index):
         return self.pvec[index]

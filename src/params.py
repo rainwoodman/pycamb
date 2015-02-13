@@ -59,6 +59,8 @@ class BoundParams(numpy.ndarray):
     def __setitem__(self, index, value):
         self.lookup[index][...] = value
 
+    def __str__(self):
+        return repr(self)
     def __repr__(self):
         return '\n'.join([
             "%(name)s = %(value)f" % dict(
