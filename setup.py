@@ -59,7 +59,7 @@ cambsources = ['camb/%s' % f for f in [
     'modules.f90',
     'bessels.f90',
     'equations.f90',
-    'halofit.f90',
+    'halofit_ppf.f90',
     'lensing.f90',
     'SeparableBispectrum.F90',
     'cmbmain.f90',

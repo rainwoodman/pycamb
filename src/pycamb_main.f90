@@ -56,8 +56,11 @@ module pycamb_mod
         P%Max_eta_k=2*lmax
         P%Max_eta_k_tensor=2*lmax
         P%transfer%num_redshifts = nr
+        P%transfer%PK_num_redshifts = nr
         do i=1,nr
             P%transfer%redshifts(i)=redshifts(i)
+            P%transfer%PK_redshifts(i)=redshifts(i)
+            P%transfer%PK_redshifts_index(i)=i
         enddo
         call CAMB_GetResults(P)
         if (global_error_flag /= 0) return
@@ -101,8 +104,11 @@ subroutine genpowerandcls(paramVec,lmax,dlogk,maxk,Max_eta_k,nred,redshifts,cls)
             P%Max_eta_k=Max_eta_k
             P%Max_eta_k_tensor=Max_eta_k
             P%transfer%num_redshifts = nr
+            P%transfer%PK_num_redshifts = nr
             do i=1,nr
                 P%transfer%redshifts(i)=redshifts(i)
+                P%transfer%PK_redshifts(i)=redshifts(i)
+                P%transfer%PK_redshifts_index(i)=i
             enddo
             call CAMB_GetResults(P)
             if (global_error_flag /= 0) return
@@ -163,9 +169,12 @@ subroutine genpowerandcls(paramVec,lmax,dlogk,maxk,Max_eta_k,nred,redshifts,cls)
         
         P%transfer%kmax = maxk * (P%h0/100._dl)
         P%transfer%k_per_logint = dlogk
-        
+
+        P%transfer%PK_num_redshifts = nr
         do i=1,nr
             P%transfer%redshifts(i)=redshifts(i)
+            P%transfer%PK_redshifts(i)=redshifts(i)
+            P%transfer%PK_redshifts_index(i)=i
         enddo
         call CAMB_GetResults(P)
         if (global_error_flag /= 0) return
