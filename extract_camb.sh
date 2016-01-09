@@ -24,5 +24,5 @@ if [ ! -f $FILE ]; then
 fi
 
 tar -xzvf $FILE
-
+mv CAMB camb
 trap "rm -rf tmp" EXIT
