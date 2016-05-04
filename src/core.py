@@ -66,7 +66,7 @@ class PyCamb(object):
         else:
             redshift = z
 
-        unique, inv = numpy.unique(-numpy.assarray(redshift), return_inverse=True)
+        unique, inv = numpy.unique(-numpy.asarray(redshift), return_inverse=True)
 
         if len(unique)>500: 
             raise ValueError("At most 500 redshifts can be computed without changing the hardcoded camb value")
